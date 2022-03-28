@@ -41,8 +41,8 @@ class CartController extends AbstractController
      */
     public function delProduct(int $idProd, SessionInterface $session)
     {
-        $panier = $session->get('panier', $panier);
-        if (!empty($panier($idprod))) {
+        $panier = $session->get('panier', []);
+        if (!empty($panier[$idProd])) {
             unset($panier[$idProd]);
         }
         $session->set('panier', $panier);
