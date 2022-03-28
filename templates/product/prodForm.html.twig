@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Mini Shop : Ajouter ou modifier un produit
+{% endblock %}
+
+{% block body %}
+	{# {{ form(formArticle) }} #}
+	{% if mode %}
+		<h1>Modifier un produit</h1>
+	{% else %}
+		<h1>Créer un produit</h1>
+	{% endif %}
+	<div class="container">
+		{{form_start(formProduct)}}
+		{{form_row(formProduct.name,{label:'Nom Produit','attr':{'placeholder':"Entrer le nom du produit"}})}}
+		{{form_row(formProduct.category,{label:'Nom Catégorie','attr':{'placeholder':"Entrer le nom de la catégorie"}})}}
+		{{form_row(formProduct.quantity,{label:'Quantité','attr':{'placeholder':"Entrer la quantité"}})}}
+		{{form_row(formProduct.price,{label:'Prix','attr':{'placeholder':"Entrer le prix"}})}}
+		<br>
+		{% if mode %}
+			<button class="btn btn-success" type="submit">Mettre à jour le produit</button>
+		{% else %}
+			<button class="btn btn-success" type="submit">Créer le produit</button>
+		{% endif %}
+		{{form_end(formProduct)}}
+	</div>
+{% endblock %}

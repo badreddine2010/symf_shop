@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Mini Shop : Ajouter ou modifier une catégorie
+{% endblock %}
+
+{% block body %}
+	{# {{ form(formArticle) }} #}
+	{% if mode %}
+		<h1>Modifier une catégorie</h1>
+	{% else %}
+		<h1>Créer une catégorie</h1>
+	{% endif %}
+	<div class="container">
+		{{form_start(formCategory)}}
+		{{form_row(formCategory.name,{label:'Nom','attr':{'placeholder':"Entrer le nom de la catégorie"}})}}
+		<br>
+		{% if mode %}
+			<button class="btn btn-success" type="submit">Mettre à jour la catégorie</button>
+		{% else %}
+			<button class="btn btn-success" type="submit">Créer la catégorie</button>
+		{% endif %}
+		{{form_end(formCategory)}}
+	</div>
+{% endblock %}

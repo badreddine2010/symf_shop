@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello Categories!
+{% endblock %}
+{% block body %}
+	<h1>Liste des catégories</h1>
+	<div class="container">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id catégorie</th>
+					<th>Catégorie</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			{% for category in categories %}
+			<tr>
+				<td>
+					{{category.Id}}
+				</td>
+				<td>
+					{{category.name}}
+				</td>
+
+				<td>
+					<a class="btn btn-warning" href="{{ path('cat-edit',{'id':category.id}) }}">modifier</a>
+					<a class="btn btn-danger" href="{{ path('cat-delete',{'id':category.id}) }}" onclick="return confirm('Are you sure you want to delete this item?');">supprimer</a>
+				</td>
+			</tr>
+	</div>
+		<br>
+{% endfor %}
+		</table>
+<a class="btn btn-primary" href="{{ path('cat-new') }}">Création d'une nouvelle catégorie</a>{% endblock %}

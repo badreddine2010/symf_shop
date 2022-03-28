@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Mini Shop : page detail-catégorie
+{% endblock %}
+{% block body %}
+	<h1>Détail Catégorie
+	</h1>
+	<div class="container">
+		<h3>{{category.id}}</h3>
+		<h3>{{category.name}}</h3>
+		<a href="{{path('cat-edit',{'id':category.id})}}" class="btn btn-success">Modifier la catégorie</a>
+		<a href="{{path('cat-delete',{'id':category.id})}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Supprimer la catégorie</a>
+	</div>
+{% endblock %}
