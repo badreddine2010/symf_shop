@@ -15,13 +15,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/product", name="products")
+     * @Route("/product", name="app_product_index")
      */
     public function index(ProductRepository $productRepo): Response
     { 
-        if (!$this->isGranted('ROLE_ADMIN')) {
-        return $this->render('/error/accessDenied.html.twig');
-    }
+    //     if (!$this->isGranted('ROLE_ADMIN')) {
+    //     return $this->render('/error/accessDenied.html.twig');
+    // }
         $products = $productRepo->findAll();
         // dd($products); //dump and die
         return $this->render('product/index.html.twig', [
@@ -33,6 +33,7 @@ class ProductController extends AbstractController
      */
     public function indexClient(ProductRepository $productRepo): Response
     {
+        
         $products = $productRepo->findAll();
         // dd($products); //dump and die
         return $this->render('product/indexClient.html.twig', [
