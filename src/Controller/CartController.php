@@ -67,6 +67,20 @@ class CartController extends AbstractController
             // 'nbreItems'=>$nbreitems
         ]);
     }
+     /**
+     * @Route("/panier/delete",name="cart_delete")
+     */
+    public function deleteCart(SessionInterface $session)
+    {
+        $panier = $session->get('panier', []);
+
+        
+            unset($panier);
+        
+        $session->set('panier', []);
+
+        return $this->redirectToRoute('app_cart');
+    }
     /**
      * @Route("/panier/remove/{id}",name="cart_remove")
      */

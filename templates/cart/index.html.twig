@@ -56,7 +56,13 @@
 						</td>
 						<td>
 							{{total}}€</td>
-						<td></td>
+					</tr>
+
+					<tr>
+						<td>
+							<a class="btn btn-danger" href="{{ path('cart_delete' )}}">Vider le panier</a>
+							<a class="btn btn-primary" href="{{ path('cart_delete' )}}">Valider votre commande</a>
+						</td>
 					</tr>
 				</tfoot>
 			{% else %}
