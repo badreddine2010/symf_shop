@@ -3,6 +3,7 @@
 {% endblock %}
 {% block body %}
 	<h1>Liste des produits</h1>
+	<br>
 	<div class="container">
 		<table class="table">
 			<thead>
@@ -39,7 +40,6 @@
 				</td>
 			</tr>
 	</div>
-		<br>
 {% endfor %}
 		</table>
 <a class="btn btn-primary" href="{{ path('prod-new') }}">Création d'un nouveau produit</a>

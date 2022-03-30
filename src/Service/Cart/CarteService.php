@@ -17,6 +17,11 @@ class CarteService
         $this->productRepository = $productRepository;
     }
 
+    public function clearCart(){
+
+        unset($panier);
+    }
+
     public function add(int $id)
     {
         $panier = $this->session->get('panier', []);

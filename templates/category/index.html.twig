@@ -3,6 +3,7 @@
 {% endblock %}
 {% block body %}
 	<h1>Liste des catégories</h1>
+	<br>
 	<div class="container">
 		<table class="table">
 			<thead>
@@ -27,7 +28,6 @@
 				</td>
 			</tr>
 	</div>
-		<br>
 {% endfor %}
 		</table>
 <a class="btn btn-primary" href="{{ path('cat-new') }}">Création d'une nouvelle catégorie</a>{% endblock %}

@@ -7,6 +7,7 @@ use App\Entity\Order;
 use DateTimeImmutable;
 use App\Entity\OrderLine;
 use App\Service\Cart\CartService;
+use App\Service\Cart\CarteService;
 use App\Repository\OrderRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,8 +19,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  */
 class OrderController extends AbstractController
 {
-    /*
-     * @Route("/", name="order_all")
+   
+    /**
+     *@Route("/", name="order_all") 
      */
     public function index(OrderRepository $orderRepo): Response
     {
@@ -28,12 +30,13 @@ class OrderController extends AbstractController
         ]); //Je passe à mon twig le repository de mon order comme paramètre
     }
 
-    /*
-     * @Route("/add/{user}", name="order_add")
+   
+    /**
+     *@Route("/add/{user}", name="order_add") 
      */
     public function addOrder(
         User $user,
-        CartService $cart,
+        CarteService $cart,
         EntityManagerInterface $em
     ) {
         //On a récupéré l'id de l'utilisateur directement à partir de index.twig
@@ -51,11 +54,11 @@ class OrderController extends AbstractController
             $cartDetails = $cart->getCartDetails();
             foreach ($cartDetails as $line) {
                 $orderLine = new OrderLine();
-                $orderLine->setQuantity($line['qty']);
-                $orderLine->setProduct($line['produit']);
+                $orderLine->setQuantity($line['quantity']);
+                $orderLine->setProduct($line['product']);
                 $orderLine->setOrderNum($order);
 
-                $totalLine = $line['qty'] * $line['produit']->getPrice();
+                $totalLine = $line['quantity'] * $line['product']->getPrice();
 
                 $orderLine->setTotal($totalLine);
 

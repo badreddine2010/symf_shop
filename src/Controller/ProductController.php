@@ -65,7 +65,7 @@ class ProductController extends AbstractController
         if ($formProduct->isSubmitted() && $formProduct->isValid()) {
             $em->persist($product);
             $em->flush();
-            return $this->redirectToRoute('products', [
+            return $this->redirectToRoute('app_product_index', [
                 'id' => $product->getId(),
             ]);
         }
@@ -95,7 +95,7 @@ class ProductController extends AbstractController
         $entityManager->remove($product);
         $entityManager->flush();
         
-        return $this->redirectToRoute('products', [
+        return $this->redirectToRoute('app_pruduct_index', [
             'id' => $product->getId()
         ]);
     }
