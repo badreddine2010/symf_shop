@@ -33,7 +33,6 @@ class CartController extends AbstractController
      */
     public function add($id, CarteService $carteService)
     {
-<<<<<<< HEAD
         $carteService->add($id);
         return $this->redirectToRoute('app_product_client', [
             'controller_name' => 'CartController',
@@ -77,11 +76,6 @@ class CartController extends AbstractController
 
         if (!empty($panier[$id])) {
             unset($panier[$id]);
-=======
-        $panier = $session->get('panier', []);
-        if (!empty($panier[$idProd])) {
-            unset($panier[$idProd]);
->>>>>>> 3494c8384c34559fba8a44584e2244af6bc7a92d
         }
         $session->set('panier', $panier);
 
