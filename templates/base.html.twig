@@ -52,10 +52,16 @@
 							<li class="nav-item">
 								<a class="nav-link" href="{{ path('app_category') }}">Catégories</a>
 							</li>
+							<li class="nav-item">
+							<a class="nav-link" href="{{ path('all_order') }}">Commandes</a>
+						</li>
 						</li>
 						{% else %}
 						<li class="nav-item">
 							<a class="nav-link" href="{{ path('productsClient') }}">Produits</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('order_all') }}">Commandes</a>
 						</li>
 
 					    {% endif %}

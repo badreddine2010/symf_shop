@@ -21,19 +21,32 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class OrderController extends AbstractController
 {
-   
+
     /**
      *@Route("/", name="order_all") 
      */
-    public function index(OrderRepository $orderRepo): Response
+    public function index(OrderRepository $orderRepo,UserInterface $user): Response
     {
-        
+
+        return $this->render('order/index.html.twig', [
+            'orders' => $orderRepo->findBy(['customer'=>$user]),
+            // 'user'=>$orderRepo->getCustomer($user)
+        ]); //Je passe à mon twig le repository de mon order comme paramètre
+    }
+     /**
+     *@Route("/all", name="all_order") 
+     */
+    public function indexAdmin(OrderRepository $orderRepo): Response
+    {
+
         return $this->render('order/index.html.twig', [
             'orders' => $orderRepo->findAll(),
+            // 'user'=>$orderRepo->getCustomer($user)
         ]); //Je passe à mon twig le repository de mon order comme paramètre
     }
 
-   
+
+
     /**
      *@Route("/add/{user}", name="order_add") 
      */
@@ -43,7 +56,7 @@ class OrderController extends AbstractController
         EntityManagerInterface $em
     ) {
         //On a récupéré l'id de l'utilisateur directement à partir de index.twig
-$faker = \Faker\Factory::create();
+        $faker = \Faker\Factory::create();
         if ($user) {
             $order = new Order();
             $order->setRefcde('Ref' . $faker->numberBetween($min = 1000000, $max = 9999999));
