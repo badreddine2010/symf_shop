@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Faker\Factory;
 use App\Entity\User;
 use App\Entity\Order;
 use DateTimeImmutable;
@@ -13,6 +14,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Route("/order")
@@ -25,6 +27,7 @@ class OrderController extends AbstractController
      */
     public function index(OrderRepository $orderRepo): Response
     {
+        
         return $this->render('order/index.html.twig', [
             'orders' => $orderRepo->findAll(),
         ]); //Je passe à mon twig le repository de mon order comme paramètre
@@ -40,10 +43,10 @@ class OrderController extends AbstractController
         EntityManagerInterface $em
     ) {
         //On a récupéré l'id de l'utilisateur directement à partir de index.twig
-
+$faker = \Faker\Factory::create();
         if ($user) {
             $order = new Order();
-            $order->setRefcde('CDE' . 'XXXXX');
+            $order->setRefcde('Ref' . $faker->numberBetween($min = 1000000, $max = 9999999));
             $order->setDate(new \DateTimeImmutable());
             $order->setTotal($cart->getCartTotal()); //On utilise la méthode getCartTotal pour récupérer le total de produits dans le panier
             $order->setCustomer($user);

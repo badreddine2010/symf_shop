@@ -10,34 +10,34 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>Nom</th>
-						<th>Categorie</th>
-						<th>Quantité</th>
-						<th>Prix</th>
-						<th>Total</th>
-						<th>Action</th>
+						<th class="text-center">Nom</th>
+						<th class="text-center">Categorie</th>
+						<th class="text-center">Quantité</th>
+						<th class="text-center">Prix</th>
+						<th class="text-center">Total</th>
+						<th class="text-center">Action</th>
 					</tr>
 				</thead>
 				<tbody>
 					{% for item in items %}
 						<tr>
-							<td>
+							<td class="text-center">
 								{{item.product.name}}
 							</td>
-							<td>
+							<td class="text-center">
 								{{item.product.category.name}}
 							</td>
-							<td>
+							<td class="text-center">
 								<a class="btn btn-success" href="{{ path('cart_lessQty',{'id':item.product.id}) }}">-</a>
 								{{item.quantity}}<a class="btn btn-success" href="{{ path('cart_addQty',{'id':item.product.id}) }}">+</a>
 							</td>
-							<td>
+							<td class="text-center">
 								{{item.product.price}}€
 							</td>
-							<td>
+							<td class="text-center">
 								{{item.product.price * item.quantity}}€
 							</td>
-							<td>
+							<td class="text-center">
 								<a href="{{path('cart_remove',{'id':item.product.id})}}" class="btn btn-danger btn-sm">
 									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewbox="0 0 16 16">
 										<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -50,24 +50,33 @@
 				</tbody>
 				<tfoot>
 					<tr>
-						<td colspan="3"></td>
-						<td>
+						<td colspan="3" class="text-center"></td>
+						<td class="text-center">
 							Total :
-						</td>
-						<td>
+						</td class="text-center">
+						<td class="text-center">
 							{{total}}€</td>
-						<td></td>
+						<td class="text-center"></td>
+					</tr>
+					<tr>
+					<td colspan="4" class="text-center"></td>
+		<td class="text-center">
+        <a class="btn btn-danger" href="{{ path('cart_delete')}}">Vider le panier</a>
+		</td>
+		{% if app.user %}
+		<td class="text-center">
+        <a class="btn btn-primary" href="{{path('order_add',{'user':app.user.id})}}">Commander</a>
+		</td>
+    {% else %}
+		<td class="text-center">
+        <a class="btn btn-success" href="{{ path('app_login')}}">Connectez vous</a>
+		</td>
+    {% endif %}
 					</tr>
 				</tfoot>
 			{% else %}
 				<h1>Votre panier est vide</h1>
 			{% endif %}
 		</table>
-		{% if app.user %}
-        {# <a class="btn btn-primary" href="{{ path('order_add',{'user':app.user.id}) }}">Commander</a> #}
-        <a class="btn btn-primary" href="{{path('order_add',{'user':app.user.id})}}">Commander</a>
-    {% else %}
-        <a class="btn btn-primary" href="{{ path('app_login')}}">Connectez vous</a>
-    {% endif %}
 	</div>
 {% endblock %}

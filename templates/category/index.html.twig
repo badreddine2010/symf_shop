@@ -8,21 +8,21 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Id catégorie</th>
-					<th>Catégorie</th>
-					<th>Action</th>
+					<th class="text-center">Id catégorie</th>
+					<th class="text-center">Catégorie</th>
+					<th class="text-center">Action</th>
 				</tr>
 			</thead>
 			{% for category in categories %}
 			<tr>
-				<td>
+				<td class="text-center">
 					{{category.Id}}
 				</td>
-				<td>
+				<td class="text-center">
 					{{category.name}}
 				</td>
 
-				<td>
+				<td class="text-center">
 					<a class="btn btn-warning" href="{{ path('cat-edit',{'id':category.id}) }}">modifier</a>
 					<a class="btn btn-danger" href="{{ path('cat-delete',{'id':category.id}) }}" onclick="return confirm('Are you sure you want to delete this item?');">supprimer</a>
 				</td>

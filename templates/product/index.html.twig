@@ -8,33 +8,33 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Id produit</th>
-					<th>Produit</th>
-					<th>Catégorie</th>
-					<th>Stock</th>
-					<th>Prix</th>
-					<th>Action</th>
+					<th class="text-center">Id produit</th>
+					<th class="text-center">Produit</th>
+					<th class="text-center">Catégorie</th>
+					<th class="text-center">Stock</th>
+					<th class="text-center">Prix</th>
+					<th class="text-center">Action</th>
 				</tr>
 			</thead>
 			{% for product in products %}
 			<tr>
-				<td>
+				<td class="text-center">
 					{{product.Id}}
 				</td>
-				<td>
+				<td class="text-center">
 					{{product.name}}
 				</td>
-                <td>
+                <td class="text-center">
 					{{product.category.name}}
 				</td>
-                <td>
+                <td class="text-center">
 					{{product.quantity}}
 				</td>
-                <td>
+                <td class="text-center">
 					{{product.Price}}€
 				</td>
 
-				<td>
+				<td class="text-center">
 					<a class="btn btn-warning" href="{{ path('prod-edit',{'id':product.id}) }}">modifier</a>
 					<a class="btn btn-danger" href="{{ path('prod-delete',{'id':product.id}) }}" onclick="return confirm('Are you sure you want to delete this item?');">supprimer</a>
 				</td>

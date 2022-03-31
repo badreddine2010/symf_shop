@@ -6,9 +6,9 @@
 
     <h1 class="text-center"> Liste des commandes </h1>
     <div class="container">
-        <table class="table table-Dark">
+        <table class="table">
             <thead>
-                    <tr class="table-info">
+                    <tr>
                     <td class="text-center">Référence Commande</td>
                     <td class="text-center">Date</td>
                     <td class="text-center">Nom du client</td>
@@ -19,10 +19,10 @@
             <tbody>
             {% for order in orders %}
 
-                <tr class="table-info">
+                <tr>
                     <td class="text-center"> {{order.refCde}} </td>
                     <td class="text-center"> {{order.date | date("d/m/y")}} </td>  {# On met en place un filtre pour la date avec la fonction date #}
-                    <td class="text-center"> {{order.customer.email}} </td>
+                    <td class="text-center"> {{order.customer.firstName}} {{order.customer.name}} </td>
                     <td class="text-center"> {{order.total}} </td>
                     <td class="text-center"> <a href="{{ path('order_detail', {'order': order.id}) }}" class="btn btn-success">Voir détail</a> </td>
                 </tr>

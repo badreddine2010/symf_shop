@@ -81,4 +81,18 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute('app_cart');
     }
+    /**
+     * @Route("/panier/delete",name="cart_delete")
+     */
+    public function deleteCart(SessionInterface $session)
+    {
+        $panier = $session->get('panier', []);
+
+        if (!empty($panier)) {
+            unset($panier);
+        }
+        $session->set('panier', []);
+
+        return $this->redirectToRoute('app_cart');
+    }
 }

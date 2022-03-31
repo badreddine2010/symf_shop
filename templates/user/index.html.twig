@@ -8,32 +8,32 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Rôle</th>
+                <th class="text-center">Id</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Rôle</th>
                 {# <th>Password</th> #}
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Actions</th>
+                <th class="text-center">Prénom</th>
+                <th class="text-center">Nom</th>
+                <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td class="text-center">{{ user.id }}</td>
+                <td class="text-center">{{ user.email }}</td>
+                <td class="text-center">{{ user.roles ? user.roles|json_encode : '' }}</td>
                 {# <td>{{ user.password }}</td> #}
-                <td>{{ user.firstName }}</td>
-                <td>{{ user.name }}</td>
-                <td>
+                <td class="text-center">{{ user.firstName }}</td>
+                <td class="text-center">{{ user.name }}</td>
+                <td class="text-center">
                     <a class="btn btn-warning" href="{{ path('app_user_show', {'id': user.id}) }}">Voir</a>
                     <a class="btn btn-success" href="{{ path('app_user_edit', {'id': user.id}) }}">Editer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">Aucun enregistrement trouvé</td>
+                <td colspan="7" class="text-center">Aucun enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>

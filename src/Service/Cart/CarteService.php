@@ -3,6 +3,7 @@
 namespace App\Service\Cart;
 
 use App\Repository\ProductRepository;
+use SessionIdInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CarteService
@@ -19,7 +20,12 @@ class CarteService
 
     public function clearCart(){
 
-        unset($panier);
+        $panier = $this->session->get('panier', []);
+
+        if (!empty($panier)) {
+            unset($panier);
+        }
+        $this->session->set('panier', []);    
     }
 
     public function add(int $id)

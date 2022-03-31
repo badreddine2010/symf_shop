@@ -10,10 +10,10 @@
 
     <div class="container">
 
-        <h4 class="text-center mb-4 mt-4"> Détail Commande </h4>
-        <table class="table table-dark"> 
+        <h1 class="text-center mb-4 mt-4"> Détail Commande </h1>
+        <table class="table"> 
             <thead>
-                <tr class="table-info">
+                <tr>
                     <th class="text-center">Nom produit</th>
                     <th class="text-center">Quantité</th>
                     <th class="text-center">Montant</th>
@@ -23,7 +23,7 @@
 
             {% for ol in ols %}
 
-                <tr class="table-info">
+                <tr>
                     <td class="text-center">{{ ol.product.name }}</td>
                     <td class="text-center">{{ ol.quantity }}</td>
                     <td class="text-center">{{ ol.total }}</td>
@@ -33,7 +33,7 @@
 
             </tbody>
         </table>
-        <a href="{{path('order_all')}}" class="btn btn-info"> Retour aux commandes </a>
+        <a href="{{path('order_all')}}" class="btn btn-secondary"> Retour aux commandes </a>
 
     </div>
 
