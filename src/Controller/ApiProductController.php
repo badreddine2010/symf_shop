@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controller;
-// header("Access-Control-Allow-Origin: *");
 
 use App\Entity\Product;
 use App\Repository\CategoryRepository;
@@ -29,29 +28,13 @@ class ApiProductController extends AbstractController
      */
     public function index(ProductRepository $prodRepo)
     {
-        //  dd($jsonData);
-        
-        // $prodsNormalized = $normalizerInterface->normalize($prods,null,['groups'=>'prods:read']);
-        // $jsonData=json_encode($prodsNormalized);
-        // $jsonData = $serializerInterface->serialize($prods, 'json', ['groups' => 'prods:read']);
-        
-        //  dd($prodsNormalized,$jsonData);
-        // $response = new Response($jsonData,200,["Content-Type"=>"application/json"]);
-        // $response = new JsonResponse($jsonData, 200, [], true);
-        //simplification de la reponse 2
-        // $prods = $prodRepo->findAll();
-        // $response = $this->json($prods, 200, [], ['groups' => 'prods:read']);
-        // return $response;
+      
         
         //simplification de la reponse
         return $this->json($prodRepo->findAll(), 200, [], ['groups' => 'prods:read']);
-        // return $this->json($orderRepository->findAll(), 200, [], ['groups' => 'prods:read']);
     }
     /**
      * @Route("/order", name="app_api_order",methods={"GET"})
-     *def yourMethod(params):
-     *response = flask.jsonify({'some': 'data'})
-     *return response
      */
     public function getOrders(OrderRepository $orderRepository)
     {
