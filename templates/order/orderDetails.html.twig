@@ -2,7 +2,7 @@
 
 {% block title %}
 
-    Store : Détails de commande
+    Mini shop : Détails de commande
 
 {% endblock %}
 
@@ -11,6 +11,7 @@
     <div class="container">
 
         <h1 class="text-center mb-4 mt-4"> Détail Commande </h1>
+        <br>
         <table class="table"> 
             <thead>
                 <tr>
@@ -26,7 +27,8 @@
                 <tr>
                     <td class="text-center">{{ ol.product.name }}</td>
                     <td class="text-center">{{ ol.quantity }}</td>
-                    <td class="text-center">{{ ol.total }}</td>
+                    <td class="text-center">{{ ol.total }}€</td>
+                    
                 </tr>
 
             {% endfor %}

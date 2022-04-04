@@ -19,24 +19,28 @@ class Order
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups("prods:read")
+     * @Groups("orders:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups("prods:read")
+     * @Groups("orders:read")
      */
     private $refCde;
 
     /**
      * @ORM\Column(type="datetime")
      * @Groups("prods:read")
+     * @Groups("orders:read")
      */
     private $date;
 
     /**
      * @ORM\Column(type="float")
      * @Groups("prods:read")
+     * @Groups("orders:read")
      */
     private $total;
 
@@ -44,12 +48,14 @@ class Order
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="orders")
      * @ORM\JoinColumn(nullable=false)
      * @Groups("prods:read")
+     * @Groups("orders:read")
      */
     private $customer;
 
     /**
      * @ORM\OneToMany(targetEntity=OrderLine::class, mappedBy="orderNum", orphanRemoval=true)
      * @Groups("prods:read")
+     * @Groups("orders:read")
      */
     private $orderLines;
 

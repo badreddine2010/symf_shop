@@ -1,42 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}User
+{% endblock %}
 
 {% block body %}
-    <h1>User</h1>
-<div class="container">
-    <table class="table">
-        <tbody>
-            <tr>
-                <th class="text-center">Id</th>
-                <td class="text-center">{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th class="text-center">Email</th>
-                <td class="text-center">{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th class="text-center">Rôles</th>
-                <td class="text-center">{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-            {# <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr> #}
-            <tr>
-                <th class="text-center">Prénom</th>
-                <td class="text-center">{{ user.firstName }}</td>
-            </tr>
-            <tr>
-                <th class="text-center">Nom</th>
-                <td class="text-center">{{ user.name }}</td>
-            </tr>
-        </tbody>
-    </table>
+	{# <a  href="{{ path('app_user_index') }}">back to list</a> #}
+	<h1>User</h1>
+	<div class="container">
+		<table class="table">
+			<tbody>
+				{% if is_granted('ROLE_ADMIN') %}
 
-    {# <a href="{{ path('app_user_index') }}">back to list</a> #}
+					<tr>
+						<th class="text-center">Id</th>
+						<td class="text-center">{{ user.id }}</td>
+					</tr>
+				{% endif %}
+				<tr>
+					<th class="text-center">Email</th>
+					<td class="text-center">{{ user.email }}</td>
+				</tr>
+				{% if is_granted('ROLE_ADMIN') %}
 
-    <a class="btn btn-success" href="{{ path('app_user_edit', {'id': user.id}) }}">Editer</a>
+					<tr>
+						<th class="text-center">Rôles</th>
+						<td class="text-center">{{ user.roles ? user.roles|json_encode : '' }}</td>
+					</tr>
+				{% endif %}
+				{# <tr>
+				                <th>Password</th>
+				                <td>{{ user.password }}</td>
+				            </tr> #}
+				<tr>
+					<th class="text-center">Prénom</th>
+					<td class="text-center">{{ user.firstName }}</td>
+				</tr>
+				<tr>
+					<th class="text-center">Nom</th>
+					<td class="text-center">{{ user.name }}</td>
+				</tr>
+			</tbody>
+		</table>
 
-    {{ include('user/_delete_form.html.twig') }}
-{% endblock %}
+
+		{# <a class="btn btn-success" href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a> #}
+
+		{{ include('user/_delete_form.html.twig') }}
+	{% endblock %}

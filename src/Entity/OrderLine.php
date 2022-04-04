@@ -16,6 +16,7 @@ class OrderLine
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups("prods:read")
+     * @Groups("orders:read")
      */
     private $id;
 
@@ -29,12 +30,14 @@ class OrderLine
     /**
      * @ORM\Column(type="integer")
      * @Groups("prods:read")
+     * @Groups("orders:read")
      */
     private $quantity;
 
     /**
      * @ORM\Column(type="float")
      * @Groups("prods:read")
+     * @Groups("orders:read")
      */
     private $total;
 
@@ -42,6 +45,7 @@ class OrderLine
      * @ORM\ManyToOne(targetEntity=Product::class)
      * @ORM\JoinColumn(nullable=false)
      * @Groups("prods:read")
+     * @Groups("orders:read")
      */
     private $product;
 

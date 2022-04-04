@@ -41,7 +41,6 @@ class OrderController extends AbstractController
 
         return $this->render('order/index.html.twig', [
             'orders' => $orderRepo->findAll(),
-            // 'user'=>$orderRepo->getCustomer($user)
         ]); //Je passe à mon twig le repository de mon order comme paramètre
     }
 

@@ -24,6 +24,7 @@ class Category
     /**
      * @ORM\Column(type="string", length=255)
      *  @Groups("prods:read")
+     * @Groups("orders:read")
      */
     private $name;
 
