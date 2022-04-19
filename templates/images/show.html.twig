@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Images
+{% endblock %}
+
+{% block body %}
+	{# <h1>Images</h1>
+
+	<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+				{% for image in images %}
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{{ asset('build/images/' ~ image.link) }}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{{ asset('build/images/' ~ image.link) }}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{{ asset('build/images/' ~ image.link) }}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+                {% endfor %}
+</div> #}
+<div data-controller="hello">
+  <input data-hello-target="name" type="text">
+
+  <button data-action="click->hello#greet">Greet</button>
+
+  <span data-hello-target="output"></span>
+</div>
+<ul id="parent" data-controller="list">
+  <li data-list-target="item">One</li>
+  <li data-list-target="item">Two</li>
+  <li>
+    <ul id="child" data-controller="list">
+      <li data-list-target="item">I am</li>
+      <li data-list-target="item">a nested list</li>
+    </ul>
+  </li>
+</ul>
+				{# <td>
+														<img src="{{ asset('build/images/' ~ image.link) }}" width="150" alt="...">
+													</td> #}
+		
+
+	<a href="{{ path('app_images_index') }}">back to list</a>
+
+	{# <a href="{{ path('app_images_edit', {'id': image.id}) }}">edit</a> #}
+
+	{{ include('images/_delete_form.html.twig') }}
+{% endblock %}

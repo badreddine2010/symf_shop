@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-// header("Access-Control-Allow-Origin: *");
+
 
 use App\Entity\Product;
 use App\Repository\CategoryRepository;
@@ -23,12 +23,15 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  * @Route("/api")
  */
 class ApiProductController extends AbstractController
+
 {
+    
     /**
      * @Route("/product", name="app_api_product",methods={"GET"})
      */
     public function index(ProductRepository $prodRepo)
     {
+        
         //  dd($jsonData);
         
         // $prodsNormalized = $normalizerInterface->normalize($prods,null,['groups'=>'prods:read']);

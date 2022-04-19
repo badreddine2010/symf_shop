@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Images;
 use App\Entity\Product;
 use App\Entity\Category;
 use Doctrine\Persistence\ObjectManager;
@@ -22,17 +23,24 @@ class AppFixtures extends Fixture
             $manager->persist($category);
         
         // create 20 products! Bam!
-        for ($i = 0; $i <mt_rand(1,3); $i++) {
+        for ($i = 1; $i <mt_rand(2,5); $i++) {
             $product = new Product();
             $product->setName($faker->word());
+            $product->setImage('livre'.$i.'.jpg');
             $product->setCategory($category);
             $product->setQuantity($faker->numberBetween($min = 2, $max = 4));
             $product->setPrice($faker->randomFloat(2, 20, 30));
             // $product->setPrice(mt_rand(10, 100));
             $manager->persist($product);
+            // create 20 products! Bam!
+        for ($i = 1; $i <mt_rand(1,11); $i++) {
+            $image = new Images();
+            $image->setLink('livre'.$i.'.jpg');
+            $image->setProduct($product);
+            $manager->persist($image); 
         }
     }
 
         $manager->flush();
     }
-}
+}}

@@ -11,6 +11,7 @@
 					<th class="text-center">Id produit</th>
 					<th class="text-center">Produit</th>
 					<th class="text-center">Catégorie</th>
+					<th class="text-center">Photo</th>
 					<th class="text-center">Stock</th>
 					<th class="text-center">Prix</th>
 					<th class="text-center">Action</th>
@@ -27,6 +28,9 @@
                 <td class="text-center">
 					{{product.category.name}}
 				</td>
+				<td>
+						<img src="{{ asset('build/images/' ~ product.image) }}" width="50" alt="...">
+					</td>
                 <td class="text-center">
 					{{product.quantity}}    
 				</td>
