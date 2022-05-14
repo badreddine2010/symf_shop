@@ -63,12 +63,11 @@
 							<a class="nav-link" href="{{ path('all_order') }}">Commandes</a>
 						</li>
 					</li>
-				{% elseif is_granted('ROLE_USER') %}
+				{% elseif is_granted('ROLE_USER') and not is_granted('ROLE_ADMIN') %}
 
 					<li class="nav-item">
 						<a class="nav-link" href="{{ path('order_all') }}">Commandes</a>
 					</li>
-				{% else %}
 					<li class="nav-item">
 						<a class="nav-link" href="{{ path('productsClient') }}">Produits</a>
 					</li>
