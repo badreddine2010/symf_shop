@@ -132,7 +132,7 @@ function retirerproduitDuPanier($id_produit_a_supprimer)
 
 	if($sql->num_rows < 1){
 		header('Location: #');
-		echo "<script type='text/javascript'> document.location = 'gestion_commande.php'; </script>";
+		echo "<script type='text/javascript'> document.location = 'order.php'; </script>";
 		exit;
 	}
 
@@ -167,10 +167,10 @@ function retirerproduitDuPanier($id_produit_a_supprimer)
 
     // var_dump($_SESSION["_sf2_meta"]);
     // die;
-    // $idCmd=$_GET['id_commande'];
-    $idCmd=1;
+    $idCmd=$_GET['id_commande'];
+    // $idCmd=1;
 
-    $sqlQuery= executeRequete("SELECT * FROM `order` WHERE 1 ");
+    $sqlQuery= executeRequete("SELECT * FROM `order` WHERE id=$idCmd ");
 		while ($rowCmd = $sqlQuery->fetch_assoc()){
             $pdf->SetFont('Arial','B',16);
             $pdf->cell(0,10, utf8_decode("Facture n°:"). " " . $rowCmd['id'], 'TB', 1, 'C');
@@ -194,7 +194,11 @@ function retirerproduitDuPanier($id_produit_a_supprimer)
         //extract($rowtLigneCmd);
         $pdf->SetFont('Arial','',12);
         //Designation
-        $pdf->cell(90,6,utf8_decode(ucfirst($rowtLigneCmd['product_id'])) , 1, 0);
+        $stmtProduct = executeRequete("SELECT * FROM product WHERE product.id=$rowtLigneCmd[product_id]");
+        $name=$stmtProduct->fetch_assoc();
+        // var_dump($name);
+        // die;
+        $pdf->cell(90,6,utf8_decode(ucfirst($name['name'])) , 1, 0);
         //quantite
         $pdf->cell(25,6,$rowtLigneCmd['quantity'], 1, 0);
         //prix
